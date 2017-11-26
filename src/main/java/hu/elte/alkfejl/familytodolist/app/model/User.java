@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class User extends BaseEntity {
     // two equalent names are not allowed
     @Column(nullable = false, unique = true)
@@ -31,8 +30,8 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String password;
     
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
+    @Enumerated(EnumType.STRING)
     private Role role;
     
     private enum Role{
