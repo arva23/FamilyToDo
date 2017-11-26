@@ -34,7 +34,7 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
     
-    private enum Role{
+    public enum Role{
         USER, ADMIN
     }
 }
