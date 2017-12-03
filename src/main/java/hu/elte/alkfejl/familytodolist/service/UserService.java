@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
 import static hu.elte.alkfejl.familytodolist.app.model.User.Role.USER;
+import hu.elte.alkfejl.familytodolist.service.exceptions.UserNotValidException;
 @Service
 @SessionScope
 @Data
@@ -37,5 +38,9 @@ public class UserService {
     
     public boolean isLoggedIn(){
         return user != null;
+    }
+    
+    public User getUser(){
+        return user;
     }
 }
