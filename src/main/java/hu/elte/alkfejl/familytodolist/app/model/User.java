@@ -33,6 +33,10 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
     private Role role;
+ 
+    public Role getRole(){
+        return role;
+    }
     
     public enum Role{
         GUEST, USER, ADMIN

@@ -1,5 +1,6 @@
 package hu.elte.alkfejl.familytodolist.app.model;
 
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -29,4 +30,22 @@ public class Task extends BaseEntity{
     
     @Column(nullable = false, unique = false)
     private int time_id;
+
+    @Column(nullable = false, unique = false)
+    private Status status;
+    
+    @Column(nullable = false, unique = false)
+    private Timestamp finished;
+    
+    public enum Status{
+        INPROGRESS, DONE
+    }
+    
+    public void setStatus(Status status){
+        this.status = status;
+    }
+    
+    public void setTimestamp(Timestamp finished){
+        this.finished = finished;
+    }
 }
