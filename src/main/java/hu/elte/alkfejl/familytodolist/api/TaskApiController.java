@@ -37,13 +37,20 @@ public class TaskApiController {
     
     @Role({ADMIN, USER})
     @GetMapping("/{id}")
-    private ResponseEntity<Task> read(@RequestParam int id){
-        Task read = taskService.read(id);
+    private ResponseEntity<Task> read(@RequestParam String id){
+        Task read = taskService.read(Integer.parseInt(id));
         return ResponseEntity.ok(read);
     }
     
     @Role(ADMIN)
     @PutMapping("/{id}")
+    private ResponseEntity<Task> update(@PathVariable int id, @RequestBody Task task){
+        Task updated = taskService.update(id, task);
+        return ResponseEntity.ok(updated);
+    }
+    
+    @Role(ADMIN)
+    @DeleteMapping("/{id}")
     private ResponseEntity delete(@RequestParam int id){
         taskService.delete(id);
         return ResponseEntity.ok().build();
