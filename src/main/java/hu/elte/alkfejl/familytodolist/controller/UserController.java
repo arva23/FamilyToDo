@@ -41,7 +41,7 @@ public class UserController {
         return "register";
     }
     
-    @PostMapping
+    @PostMapping("/register")
     public String register(@ModelAttribute User user){
         user.setRole(USER);
         userService.register(user);

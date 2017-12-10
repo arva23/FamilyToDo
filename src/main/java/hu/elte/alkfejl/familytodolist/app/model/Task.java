@@ -23,13 +23,13 @@ public class Task extends BaseEntity{
     private String description;
     
     @Column(nullable = false, unique = false)
-    private int user_id;
+    private int userId;
     
     @Column(nullable = false, unique = false)
-    private int category_id;
+    private int categoryId;
     
     @Column(nullable = false, unique = false)
-    private int time_id;
+    private int timeintervalId;
 
     @Column(nullable = false, unique = false)
     private Status status;

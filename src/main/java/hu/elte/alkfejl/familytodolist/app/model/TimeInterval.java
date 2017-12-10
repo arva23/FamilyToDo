@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class TimeIntervals extends BaseEntity{
+public class TimeInterval extends BaseEntity{
     @Column(nullable = false, unique = false)
     private String start_time;
     
