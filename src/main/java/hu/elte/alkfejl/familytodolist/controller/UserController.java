@@ -1,55 +1,55 @@
 package hu.elte.alkfejl.familytodolist.controller;
+
 import hu.elte.alkfejl.familytodolist.app.model.User;
+import hu.elte.alkfejl.familytodolist.app.model.User.Role;
 import hu.elte.alkfejl.familytodolist.service.UserService;
+import hu.elte.alkfejl.familytodolist.service.exceptions.UserNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import hu.elte.alkfejl.familytodolist.service.annotations.*;
 
-import static hu.elte.alkfejl.familytodolist.app.model.User.Role.USER;
-
-@Controller
-@RequestMapping("/user")
+@RestController
+@RequestMapping("/api/user")
 public class UserController {
+    private final UserService userService;
+    
     @Autowired
-    private UserService userService;
-    
-    @GetMapping("/tasklist")
-    public String taskList(@RequestParam(value = "name", required = true) String name, Model model){
-        model.addAttribute("name", name);
-        return "tasklist";
+    public UserController(UserService userService){
+        this.userService = userService;
     }
     
-    @GetMapping("/login")
-    public String login(Model model){
-        model.addAttribute(new User());
-        return "login";
-    }
-    
-    @PostMapping
-    public String login(@ModelAttribute User user, Model model){
-        if(userService.isValid(user)){
-            return redirectToTaskList(user);
+    //@Role({USER, ADMIN})
+    @GetMapping
+    public ResponseEntity<User> user(){
+        if(userService.isLoggedIn()){
+            return ResponseEntity.ok(userService.getUser());
         }
-        model.addAttribute("loginFailed", true);
-        return "login";
+        return ResponseEntity.badRequest().build();
     }
     
-    @GetMapping("/register")
-    public String register(Model model){
-        model.addAttribute("user", new User());
-        return "register";
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user){
+        try{
+            return ResponseEntity.ok(userService.login(user));
+        }
+        catch(UserNotValidException e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    @GetMapping("/logout")
+    public ResponseEntity logout(@RequestBody User user){
+        this.userService.setUser(null);
+        return ResponseEntity.ok().build();
     }
     
     @PostMapping("/register")
-    public String register(@ModelAttribute User user){
-        user.setRole(USER);
-        userService.register(user);
-        
-        return redirectToTaskList(user);
-    }
-    
-    public String redirectToTaskList(@ModelAttribute User user){
-        return "redirect:/user/tasklist?name=" + user.getUsername();
+    public ResponseEntity<User> register(@RequestBody User user){
+        return ResponseEntity.ok(userService.register(user));
     }
 }

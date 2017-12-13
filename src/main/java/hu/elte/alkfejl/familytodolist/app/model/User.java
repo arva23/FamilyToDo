@@ -22,12 +22,6 @@ public class User extends BaseEntity {
     private String username;
     
     @Column(nullable = false, unique = true)
-    private String first_name;
-    
-    @Column(nullable = false, unique = true)
-    private String last_name;
-    
-    @Column(nullable = false, unique = true)
     private String password;
     
     @Column(nullable = false, unique = true)
