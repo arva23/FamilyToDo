@@ -1,14 +1,13 @@
 import { AppPage } from './app.po';
 
-describe('familytodolist App', () => {
+describe('angular-test App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should show tasks', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

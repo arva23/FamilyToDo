@@ -1,20 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { TasklistComponent } from './tasklist/tasklist.component';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { ToDoService } from './to-do.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SingletaskComponent } from './singletask/singletask.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasklistComponent
+    ToDoListComponent,
+    LoginComponent,
+    RegisterComponent,
+    SingletaskComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    ToDoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
