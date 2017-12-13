@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NotificationService } from '../../services/notification.service';
-
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatProgressSpinnerModule,
+  MatIconModule, MatListModule, MatCardModule, MatTableModule, MatInputModule,
+  MatSelectModule, MatSnackBarModule, MatFormFieldModule, MatDialogModule } from '@angular/material';
+  
+  
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { MatToolbarModule, MatButtonModule, MatMenuModule, MatProgressSpinnerModule,
+  MatIconModule, MatListModule, MatCardModule, MatTableModule, MatInputModule,
+  MatSelectModule, MatSnackBarModule, MatFormFieldModule, MatDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 //import { ToDoListComponent } from './to-do-list/to-do-list.component';
@@ -27,6 +30,7 @@ import { SingletaskComponent } from './singletask/singletask.component';*/
   providers: [
     ToDoService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]/*, 
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]*/
 })
 export class AppModule { }

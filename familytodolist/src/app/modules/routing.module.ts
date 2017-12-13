@@ -20,10 +20,10 @@ const routes: Routes = [
     path: '',
     //canActivateChild: [RoutingGuard],
     children: [
-      { path: '', redirectTo: 'restaurants', pathMatch: 'full' },
+      //{ path: '', redirectTo: 'restaurants', pathMatch: 'full' },
       //{ path: 'restaurants', component: RestaurantListComponent, data: { roles: [Role.ADMIN, Role.USER, Role.GUEST] } },
       //{ path: 'user/register', component: RegisterComponent, data: { roles: [Role.GUEST] } },
-      { path: 'user/login', component: LoginComponent, data: { roles: [Role.GUEST] } },
+      { path: 'user/login', component: LoginComponent},
       /*{ path: 'user/settings', component: UserSettingsComponent, data: { roles: [Role.ADMIN, Role.USER] } },
       { path: 'products', component: ProductListComponent, data: { roles: [Role.ADMIN, Role.USER] } },
       { path: 'category/:id/products', component: ProductListByCategoryComponent, data: { roles: [Role.ADMIN, Role.USER] } },
