@@ -1,0 +1,14 @@
+<form class="form-inline mb-3">
+    <div class="form-group mr-2">
+      <input type="text" name="task" required class="form-control" ngModel #task="ngModel">
+    </div>
+    <button type="button" [disabled]="!task.valid" (click)="addTask(task)">Add</button>
+  </form>
+  <ul>
+    <li *ngFor="let task of tasks" class="mb-2">
+      <span [ngClass]="{ s: task.done }">{{ task.name }}</span>
+      <button type="button" (click)="toggleTask(task)">Toggle</button>
+      <button type="button" (click)="removeTask(task)">Remove</button>
+    </li>
+  </ul>
+  
