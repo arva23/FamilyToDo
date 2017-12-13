@@ -13,5 +13,5 @@ export class User extends BaseModel {
 }
 
 export enum Role{
-    USER, ADMIN    
+    USER, ADMIN, GUEST    
 }

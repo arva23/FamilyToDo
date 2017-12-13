@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { User, Role } from '../models/user';
 import { Task } from '../models/task';
 import { Category } from '../models/category';
-import { TimeInterval } from '../models/timeInterval'
+//import { TimeInterval } from '../models/timeInterval'
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
@@ -24,13 +24,13 @@ export class UserService {
 
   public setLoggedIn(user: User): void {
     UserService._user = user;
-    UserService._role = UserService._user.isAdmin ? Role.ADMIN : Role.USER;
+   // UserService._role = UserService._user.isAdmin ? Role.ADMIN : Role.USER;
     this._loggedIn.next();
   }
 
   public setLoggedOut(): void {
     UserService._user = undefined;
-    UserService._role = Role.GUEST;
+   // UserService._role = Role.GUEST;
   }
 
   public static get user(): User {
@@ -52,7 +52,7 @@ export class UserService {
         this.setLoggedIn(new User(response));
         resolve();
       }, () => {
-        UserService._role = Role.GUEST;
+      //  UserService._role = Role.GUEST;
         resolve();
       });
     });

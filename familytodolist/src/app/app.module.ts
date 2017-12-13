@@ -4,20 +4,21 @@ import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
+//import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { ToDoService } from './to-do.service';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { SingletaskComponent } from './singletask/singletask.component';
+import { LoginComponent } from './components/login/login.component';
+/*import { RegisterComponent } from './register/register.component';
+import { SingletaskComponent } from './singletask/singletask.component';*/
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ToDoListComponent,
     LoginComponent,
+    AppComponent/*,
+    ToDoListComponent,
+    ,
     RegisterComponent,
-    SingletaskComponent
+    SingletaskComponent*/
   ],
   imports: [
     BrowserModule,
