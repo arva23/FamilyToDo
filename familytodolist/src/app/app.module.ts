@@ -9,6 +9,7 @@ import { ToDoService } from './to-do.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SingletaskComponent } from './singletask/singletask.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SingletaskComponent } from './singletask/singletask.component';
     ToDoListComponent,
     LoginComponent,
     RegisterComponent,
-    SingletaskComponent
+    SingletaskComponent,
+    UserpageComponent
   ],
   imports: [
     BrowserModule,
