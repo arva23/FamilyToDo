@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 public class TimeInterval extends BaseEntity{
     @Column(nullable = false, unique = false)
-    private String start_time;
+    private String startTime;
     
     @Column(nullable = false, unique = false)
-    private String termination_time;
+    private String terminationTime;
 }
