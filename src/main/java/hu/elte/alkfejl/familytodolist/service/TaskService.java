@@ -36,9 +36,44 @@ public class TaskService {
         return Collections.emptyList();
     }
     
+    public Iterable<Task> listByRoleAndStatus(User user, Task.Status status){
+        
+        if(user == null){
+            return taskRepository.findAll();
+        }
+        User.Role role = user.getRole();
+        
+        if(role.equals(User.Role.USER)){
+            return taskRepository.findAllByUserIdAndStatus(user.getId(), status);
+        }
+        else if(role.equals(User.Role.ADMIN)){
+            return taskRepository.findAllByStatus(status);
+        }
+        
+        return Collections.emptyList();
+    }
+    
+    public Iterable<Task> listByCategory(User user, int categoryId){
+        if(user == null){
+            return taskRepository.findAll();
+        }
+        
+        User.Role role = user.getRole();
+        
+        if(role.equals(User.Role.USER)){
+            return taskRepository.findAllByUserIdAndCategoryId(user.getId(), categoryId);
+        }
+        else if(role.equals(User.Role.ADMIN)){
+            return taskRepository.findAllByCategoryId(categoryId);
+        }
+        
+        return Collections.emptyList();
+    }
+    
+    
+    
     public Task create(Task task){
         task.setStatus(Task.Status.INPROGRESS);
-        task.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
         return taskRepository.save(task);
     }
     

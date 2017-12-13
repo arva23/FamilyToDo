@@ -3,6 +3,8 @@ package hu.elte.alkfejl.familytodolist.app.model;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,11 +33,9 @@ public class Task extends BaseEntity{
     @Column(nullable = false, unique = false)
     private int timeintervalId;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = false)
     private Status status;
-    
-    @Column(nullable = false, unique = false)
-    private Timestamp finished;
     
     public enum Status{
         INPROGRESS, DONE
@@ -43,9 +43,5 @@ public class Task extends BaseEntity{
     
     public void setStatus(Status status){
         this.status = status;
-    }
-    
-    public void setTimestamp(Timestamp finished){
-        this.finished = finished;
     }
 }

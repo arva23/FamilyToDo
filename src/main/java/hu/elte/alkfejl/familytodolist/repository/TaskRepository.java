@@ -10,19 +10,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, String>{
-    //Optional<Task> findByName(String name);
-    
-    //Optional<Task> findByUser(String user);
-    
-    //Optional<Task> findByCategory(Category category);
-    
-    //Optional<Task> findByTimeInterval(TimeInterval time);
-
-    //Iterable<Task> findAllByUser(User user);
-    
     Optional<Task> findById(int id);
 
     Optional<Task> findByName(String name);
+    
+    Optional<Task> findByDescription(String description);
     
     Iterable<Task> findAllByUserId(int userId);
     
@@ -32,5 +24,9 @@ public interface TaskRepository extends CrudRepository<Task, String>{
     
     Iterable<Task> findAllByStatus(Status status);
     
-    Iterable<Task> findAllByFinished(Timestamp finished);
+    Iterable<Task> findAllByUserIdAndStatus(int userId, Status status);
+    
+    Iterable<Task> findAllByUserIdAndCategoryId(int userId, int categoryId);
+    
+    
 }
